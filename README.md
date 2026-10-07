@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SIP Tracker
 
-## Getting Started
+Next.js app that tracks mutual fund SIPs (invested, current value, gain, XIRR vs FD rate), using a Google Sheet as the database. Deploys to Vercel.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Google service account**
+   - GCP console → create a project → enable **Google Sheets API**.
+   - IAM → Service accounts → create one → Keys → Add key → JSON.
+2. **Sheet**: create an empty Google Sheet and share it with the service-account email as **Editor**.
+3. **Env**: `cp .env.example .env.local` and fill it in.
+4. Install and create the tabs:
+   ```bash
+   pnpm install
+   pnpm sheet:init   # creates funds / transactions / nav_history / snapshots / settings tabs, seeds NIBLSF + NFCF
+   pnpm dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Using it (milestone 1)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Edit the sheet directly, then press **Refresh from sheet** in the app.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Tab | What to put there |
+|---|---|
+| `funds` | One row per fund. Update `current_nav` and `nav_date` monthly. Optionally set `units_held` from MeroShare; if blank, units are summed from transactions. |
+| `transactions` | One row per event. `type`: `SIP`, `DIV_CASH`, `DIV_REINVEST`, `REDEEM`. `amount` in Rs. `nav` at purchase (units = amount / nav if `units` is blank). Dates as `YYYY-MM-DD`. |
+| `settings` | `fd_rate` (e.g. `0.0414`). |
 
-## Learn More
+XIRR treats SIPs as money in, cash dividends and redemptions as money out, and current value (units × NAV on `nav_date`) as the final inflow.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy (Vercel)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Import the repo in Vercel and add the same env vars from `.env.example`. For `GOOGLE_SA_KEY` on Vercel, the base64 form avoids newline issues.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+- `pnpm dev` / `pnpm build`
+- `pnpm test` – unit tests for XIRR, dates, metrics
+- `pnpm sheet:init` – create/verify sheet tabs (safe to re-run)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. ✅ Sheets client, schema bootstrap, password login, read-only dashboard
+2. Add/edit transactions in-app, bulk SIP generator, NAV updates
+3. Charts (value vs invested)
+4. Monthly snapshots via Vercel Cron, yearly review page

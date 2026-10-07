@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
+/* Ledger-like: quiet neutrals with a slight blue bias, one steel-blue accent,
+   semantic green/red reserved for gain/loss. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #16202b;
+  --ink-muted: #5b6876;
+  --line: #dde2e8;
+  --accent: #1f5c8b;
+  --on-accent: #ffffff;
+  --good: #1a7f4b;
+  --bad: #b42318;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #0f141a;
+    --surface: #161d25;
+    --ink: #e6ebf0;
+    --ink-muted: #95a2b0;
+    --line: #283340;
+    --accent: #6ea8d8;
+    --on-accent: #0f141a;
+    --good: #4cc38a;
+    --bad: #f0857a;
+    color-scheme: dark;
   }
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
 }
