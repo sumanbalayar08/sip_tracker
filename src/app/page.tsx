@@ -179,6 +179,11 @@ function FundRow({ m, fdRate }: { m: FundMetrics; fdRate: number }) {
         {m.unitsSource === "transactions" && m.units > 0 && (
           <div className="text-xs text-ink-muted">from transactions</div>
         )}
+        {m.unitsSource === "sheet" && m.txUnits > 0 && Math.abs(m.units - m.txUnits) / m.txUnits > 0.02 && (
+          <div className="text-xs text-bad" title="units_held in the funds tab differs from the units in your transactions">
+            ⚠ transactions add up to {formatUnits(m.txUnits)}
+          </div>
+        )}
       </td>
       <td className="px-4 py-3 text-right">
         {formatNav(m.fund.currentNav)}

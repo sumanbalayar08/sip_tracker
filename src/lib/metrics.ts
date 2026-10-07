@@ -9,6 +9,7 @@ export type FundMetrics = {
   redeemed: number;
   units: number;
   unitsSource: "sheet" | "transactions";
+  txUnits: number; // units summed from transactions, for cross-checking units_held
   value: number; // units × current NAV
   gain: number; // value + cash out − money in
   absoluteReturn: number | null;
@@ -72,6 +73,7 @@ export function fundMetrics(fund: Fund, allTx: Transaction[], fdRate: number): F
     redeemed,
     units,
     unitsSource: useSheet ? "sheet" : "transactions",
+    txUnits,
     value,
     gain,
     absoluteReturn: invested > 0 ? gain / invested : null,
