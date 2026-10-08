@@ -33,7 +33,10 @@ XIRR treats SIPs as money in, cash dividends and redemptions as money out, and c
 
 ## Pages
 
-- **Overview**: value, invested, gain and XIRR per fund and in total.
+UI is built with [shadcn/ui](https://ui.shadcn.com) (new-york style, Tailwind v4) in a sidebar dashboard layout, with light/dark mode. Components live in `src/components/ui` (`components.json` is set up, so `pnpm dlx shadcn@latest add <component>` works).
+
+- **Overview**: value per fund, XIRR vs FD, latest transactions, NAV history chart and a funds table.
+- **Transactions**: every SIP, dividend and redemption, filterable by fund.
 - **Projection**: 20–35 year projection from today's value and SIPs, with three return scenarios, yearly SIP step-up and inflation ("today's money").
 - **Compare**: replays your SIP dates and amounts into other funds using `nav_history` and `dividends`, to show what you'd have now.
 

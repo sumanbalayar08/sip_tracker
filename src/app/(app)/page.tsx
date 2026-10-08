@@ -1,206 +1,206 @@
+import Link from "next/link";
 import { Suspense } from "react";
-import { env } from "@/lib/env";
+import { ChevronRight, TriangleAlert } from "lucide-react";
 import { getSheetData } from "@/lib/data";
-import { portfolioMetrics, type FundMetrics } from "@/lib/metrics";
+import { portfolioMetrics } from "@/lib/metrics";
 import { requireSession } from "@/lib/session";
 import { formatNav, formatPct, formatRs, formatUnits, signed } from "@/lib/format";
+import { cn } from "@/lib/utils";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { FundAvatar } from "@/components/fund-avatar";
+import { PageHeader } from "@/components/page-header";
 import { SheetError } from "@/components/sheet-error";
+import { NavChartCard } from "./nav-chart-card";
+import { TransactionsCard } from "./transactions-card";
 
 export default function Home() {
   return (
-    <Suspense fallback={<p className="text-ink-muted">Loading your portfolio…</p>}>
-      <Dashboard />
+    <Suspense fallback={<OverviewSkeleton />}>
+      <Overview />
     </Suspense>
   );
 }
 
-async function Dashboard() {
-  await requireSession();
+function OverviewSkeleton() {
+  return (
+    <div className="flex flex-col gap-6">
+      <Skeleton className="h-12 w-64" />
+      <div className="grid gap-4 md:grid-cols-3">
+        {[0, 1, 2].map((i) => (
+          <Skeleton key={i} className="h-24" />
+        ))}
+      </div>
+      <Skeleton className="h-96" />
+    </div>
+  );
+}
 
+async function Overview() {
+  await requireSession();
   const result = await getSheetData();
   if (!result.ok) return <SheetError error={result.error} />;
   const data = result.data;
-
-  const sheetUrl = `https://docs.google.com/spreadsheets/d/${env.sheetId}/edit`;
   const p = portfolioMetrics(data.funds, data.transactions, data.settings.fdRate);
-  const recent = [...data.transactions].reverse().slice(0, 8);
-  const fundName = new Map(data.funds.map((f) => [f.code, f.name]));
+  const names = Object.fromEntries(data.funds.map((f) => [f.code, f.name || f.code]));
+
+  const warnings: React.ReactNode[] = [];
+  if (data.legacyRows > 0)
+    warnings.push(
+      <>
+        {data.legacyRows} row(s) are still in the old <b>transactions</b> tab. Run <code>pnpm sheet:split</code>.
+      </>,
+    );
+  if (data.missingFundTabs.length > 0)
+    warnings.push(
+      <>
+        No transactions tab yet for {data.missingFundTabs.join(", ")}. Run <code>pnpm sheet:init</code>.
+      </>,
+    );
+  for (const m of p.funds)
+    if (m.unitsSource === "sheet" && m.txUnits > 0 && Math.abs(m.units - m.txUnits) / m.txUnits > 0.02)
+      warnings.push(
+        <>
+          {m.fund.code}: units_held is {formatUnits(m.units)} but its transactions add up to {formatUnits(m.txUnits)}.
+        </>,
+      );
+  if (data.skippedRows > 0)
+    warnings.push(<>{data.skippedRows} transaction row(s) were skipped: each needs a date, a type and an amount.</>);
+
+  const holdingCodes = p.funds.map((m) => m.fund.code);
+  const chartFunds = data.funds
+    .filter((f) => (data.navHistory[f.code]?.length ?? 0) > 1)
+    .map((f) => ({ code: f.code, name: f.name || f.code, held: f.active }));
 
   return (
     <>
-      {(data.legacyRows > 0 || data.missingFundTabs.length > 0) && (
-        <section className="rounded-lg border border-line bg-surface p-4 text-sm">
-          {data.legacyRows > 0 && (
-            <p>
-              {data.legacyRows} row(s) are still in the old <b>transactions</b> tab. Run <code>pnpm sheet:split</code> to
-              move them into one tab per fund.
-            </p>
-          )}
-          {data.missingFundTabs.length > 0 && (
-            <p>
-              No transactions tab yet for {data.missingFundTabs.join(", ")}. Run <code>pnpm sheet:init</code>.
-            </p>
-          )}
-        </section>
+      <PageHeader
+        title="Portfolio"
+        description={
+          <>
+            Total value across all funds: {formatRs(p.value)} · {formatRs(p.invested)} invested
+          </>
+        }
+      />
+
+      {warnings.length > 0 && (
+        <Alert className="border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-100">
+          <TriangleAlert />
+          <AlertTitle>Check your sheet</AlertTitle>
+          <AlertDescription className="text-amber-900/80 dark:text-amber-100/80">
+            <ul className="list-disc pl-4">
+              {warnings.map((w, i) => (
+                <li key={i}>{w}</li>
+              ))}
+            </ul>
+          </AlertDescription>
+        </Alert>
       )}
-      <section aria-label="Portfolio summary" className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-4">
-        <Stat label="Current value" value={formatRs(p.value)} />
-        <Stat label="Invested" value={formatRs(p.invested)} />
-        <Stat
-          label="Gain"
-          value={signed(formatRs(p.gain), p.gain)}
-          sub={formatPct(p.absoluteReturn)}
-          tone={p.gain >= 0 ? "good" : "bad"}
-        />
-        <Stat
-          label="XIRR (annual)"
-          value={formatPct(p.xirr)}
-          sub={<FdPill beats={p.beatsFd} fdRate={p.fdRate} />}
-        />
-      </section>
 
-      <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Funds</h2>
-        {p.funds.length === 0 ? (
-          <Empty sheetUrl={sheetUrl}>No active funds. Add rows to the <b>funds</b> tab with active = TRUE.</Empty>
-        ) : (
-          <div className="overflow-x-auto rounded-lg border border-line bg-surface">
-            <table className="num w-full min-w-[720px] text-sm">
-              <thead className="text-left text-xs uppercase tracking-wide text-ink-muted">
-                <tr className="border-b border-line">
-                  <th className="px-4 py-2 font-medium">Fund</th>
-                  <th className="px-4 py-2 text-right font-medium">Units</th>
-                  <th className="px-4 py-2 text-right font-medium">NAV</th>
-                  <th className="px-4 py-2 text-right font-medium">Invested</th>
-                  <th className="px-4 py-2 text-right font-medium">Value</th>
-                  <th className="px-4 py-2 text-right font-medium">Gain</th>
-                  <th className="px-4 py-2 text-right font-medium">XIRR</th>
-                </tr>
-              </thead>
-              <tbody>
-                {p.funds.map((m) => (
-                  <FundRow key={m.fund.code} m={m} fdRate={p.fdRate} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
-
-      <section className="flex flex-col gap-3">
-        <div className="flex items-baseline justify-between gap-3">
-          <h2 className="text-lg font-semibold">Recent transactions</h2>
-          <a href={sheetUrl} target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline">
-            Open sheet ↗
-          </a>
-        </div>
-        {data.skippedRows > 0 && (
-          <p className="text-sm text-bad">
-            {data.skippedRows} transaction row(s) were skipped: each needs a date, a type
-            (SIP, DIV_CASH, DIV_REINVEST, REDEEM) and amount.
-          </p>
-        )}
-        {recent.length === 0 ? (
-          <Empty sheetUrl={sheetUrl}>
-            No transactions yet. Add your SIP instalments to each fund&apos;s own tab (e.g. <b>NIBLSF</b>), one row
-            each, then press Refresh.
-          </Empty>
-        ) : (
-          <ul className="divide-y divide-line rounded-lg border border-line bg-surface text-sm">
-            {recent.map((t, i) => (
-              <li key={t.id || i} className="num flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2.5">
-                <span className="text-ink-muted">{t.date}</span>
-                <span className="min-w-0 flex-1 truncate">{fundName.get(t.fundCode) ?? t.fundCode}</span>
-                <span className="rounded bg-bg px-1.5 py-0.5 text-xs text-ink-muted">{t.type}</span>
-                <span className="w-28 text-right">{formatRs(t.amount)}</span>
-              </li>
+      <div className="grid gap-6 xl:grid-cols-3">
+        <div className="flex min-w-0 flex-col gap-6 xl:col-span-2">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {p.funds.map((m) => (
+              <Link key={m.fund.code} href={`/transactions?fund=${m.fund.code}`} className="group">
+                <Card className="h-full py-4 transition-colors group-hover:bg-accent/50">
+                  <CardContent className="flex items-center gap-3 px-4">
+                    <FundAvatar code={m.fund.code} />
+                    <div className="min-w-0 flex-1">
+                      <div className="num text-xl font-semibold tracking-tight">{formatRs(m.value)}</div>
+                      <div className="truncate text-xs text-muted-foreground">{m.fund.name}</div>
+                      <div className={cn("num text-xs", m.gain >= 0 ? "text-positive" : "text-negative")}>
+                        {signed(formatRs(m.gain), m.gain)} ({formatPct(m.absoluteReturn)})
+                      </div>
+                    </div>
+                    <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
-          </ul>
-        )}
-      </section>
-    </>
-  );
-}
-
-function Stat({
-  label,
-  value,
-  sub,
-  tone,
-}: {
-  label: string;
-  value: string;
-  sub?: React.ReactNode;
-  tone?: "good" | "bad";
-}) {
-  return (
-    <div className="flex flex-col gap-1 bg-surface p-4">
-      <span className="text-xs uppercase tracking-wide text-ink-muted">{label}</span>
-      <span className={`num text-xl font-semibold ${tone === "good" ? "text-good" : tone === "bad" ? "text-bad" : ""}`}>
-        {value}
-      </span>
-      {sub && <span className="num text-sm text-ink-muted">{sub}</span>}
-    </div>
-  );
-}
-
-function FdPill({ beats, fdRate }: { beats: boolean | null; fdRate: number }) {
-  if (beats === null) return <span>FD {formatPct(fdRate)}</span>;
-  return (
-    <span className={beats ? "text-good" : "text-bad"}>
-      {beats ? "▲ Beats" : "▼ Below"} FD {formatPct(fdRate)}
-    </span>
-  );
-}
-
-function FundRow({ m, fdRate }: { m: FundMetrics; fdRate: number }) {
-  return (
-    <tr className="border-b border-line last:border-0">
-      <td className="px-4 py-3">
-        <div className="font-medium">{m.fund.name || m.fund.code}</div>
-        <div className="text-xs text-ink-muted">
-          {m.fund.code}
-          {m.firstDate && ` · since ${m.firstDate}`}
-        </div>
-      </td>
-      <td className="px-4 py-3 text-right">
-        {formatUnits(m.units)}
-        {m.unitsSource === "transactions" && m.units > 0 && (
-          <div className="text-xs text-ink-muted">from transactions</div>
-        )}
-        {m.unitsSource === "sheet" && m.txUnits > 0 && Math.abs(m.units - m.txUnits) / m.txUnits > 0.02 && (
-          <div className="text-xs text-bad" title="units_held in the funds tab differs from the units in your transactions">
-            ⚠ transactions add up to {formatUnits(m.txUnits)}
+            <Link href="/projection" className="group">
+              <Card className="h-full py-4 transition-colors group-hover:bg-accent/50">
+                <CardContent className="flex items-center gap-3 px-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs text-muted-foreground">XIRR (annual)</div>
+                    <div className="num text-xl font-semibold tracking-tight">{formatPct(p.xirr)}</div>
+                    <Badge
+                      variant="outline"
+                      className={cn("num mt-1", p.beatsFd ? "text-positive" : "text-negative")}
+                    >
+                      {p.beatsFd ? "Beats" : "Below"} FD {formatPct(p.fdRate)}
+                    </Badge>
+                  </div>
+                  <ChevronRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                </CardContent>
+              </Card>
+            </Link>
           </div>
-        )}
-      </td>
-      <td className="px-4 py-3 text-right">
-        {formatNav(m.fund.currentNav)}
-        <div className="text-xs text-ink-muted">{m.fund.navDate || "no date"}</div>
-      </td>
-      <td className="px-4 py-3 text-right">{formatRs(m.invested)}</td>
-      <td className="px-4 py-3 text-right">{formatRs(m.value)}</td>
-      <td className={`px-4 py-3 text-right ${m.gain >= 0 ? "text-good" : "text-bad"}`}>
-        {signed(formatRs(m.gain), m.gain)}
-        <div className="text-xs">{formatPct(m.absoluteReturn)}</div>
-      </td>
-      <td className="px-4 py-3 text-right">
-        {formatPct(m.xirr)}
-        <div className="text-xs">
-          <FdPill beats={m.beatsFd} fdRate={fdRate} />
-        </div>
-      </td>
-    </tr>
-  );
-}
 
-function Empty({ children, sheetUrl }: { children: React.ReactNode; sheetUrl: string }) {
-  return (
-    <div className="rounded-lg border border-dashed border-line bg-surface p-5 text-sm text-ink-muted">
-      <p>{children}</p>
-      <a href={sheetUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-accent hover:underline">
-        Open sheet ↗
-      </a>
-    </div>
+          <TransactionsCard transactions={data.transactions} funds={holdingCodes} names={names} />
+        </div>
+
+        <NavChartCard funds={chartFunds} navHistory={data.navHistory} />
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Funds</CardTitle>
+          <CardDescription>Units × latest NAV. Gain includes cash dividends you recorded.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table className="num">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Fund</TableHead>
+                <TableHead className="text-right">Units</TableHead>
+                <TableHead className="text-right">NAV</TableHead>
+                <TableHead className="text-right">Invested</TableHead>
+                <TableHead className="text-right">Value</TableHead>
+                <TableHead className="text-right">Gain</TableHead>
+                <TableHead className="text-right">XIRR</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {p.funds.map((m) => (
+                <TableRow key={m.fund.code}>
+                  <TableCell>
+                    <div className="flex items-center gap-3">
+                      <FundAvatar code={m.fund.code} className="size-8" />
+                      <div>
+                        <div className="font-medium">{m.fund.name}</div>
+                        <div className="text-xs text-muted-foreground">
+                          {m.fund.code}
+                          {m.firstDate && ` · since ${m.firstDate}`}
+                        </div>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right">{formatUnits(m.units)}</TableCell>
+                  <TableCell className="text-right">
+                    {formatNav(m.fund.currentNav)}
+                    <div className="text-xs text-muted-foreground">{m.fund.navDate}</div>
+                  </TableCell>
+                  <TableCell className="text-right">{formatRs(m.invested)}</TableCell>
+                  <TableCell className="text-right font-medium">{formatRs(m.value)}</TableCell>
+                  <TableCell className={cn("text-right", m.gain >= 0 ? "text-positive" : "text-negative")}>
+                    {signed(formatRs(m.gain), m.gain)}
+                    <div className="text-xs">{formatPct(m.absoluteReturn)}</div>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {formatPct(m.xirr)}
+                    <div className={cn("text-xs", m.beatsFd ? "text-positive" : "text-negative")}>
+                      {m.beatsFd === null ? "" : m.beatsFd ? "Beats FD" : "Below FD"}
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </>
   );
 }
