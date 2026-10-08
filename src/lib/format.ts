@@ -7,3 +7,11 @@ export const formatNav = (n: number) => n.toFixed(2);
 export const formatPct = (n: number | null) =>
   n === null || !Number.isFinite(n) ? "–" : `${(n * 100).toFixed(1)}%`;
 export const signed = (s: string, n: number) => (n > 0 ? `+${s}` : s);
+
+/** Rs 6.16 Cr / Rs 4.5 L / Rs 82,376 */
+export const formatRsShort = (n: number) => {
+  const a = Math.abs(n);
+  if (a >= 1e7) return `Rs ${(n / 1e7).toFixed(2)} Cr`;
+  if (a >= 1e5) return `Rs ${(n / 1e5).toFixed(2)} L`;
+  return formatRs(n);
+};

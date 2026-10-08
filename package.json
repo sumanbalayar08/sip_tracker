@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "sheet:init": "tsx --env-file=.env.local scripts/bootstrap-sheet.ts"
+    "sheet:init": "tsx --env-file=.env.local scripts/bootstrap-sheet.ts",
+    "sheet:split": "tsx --env-file=.env.local scripts/split-transactions.ts",
+    "sheet:seed-compare": "tsx --env-file=.env.local scripts/seed-compare.ts"
   },
   "dependencies": {
     "@googleapis/sheets": "^18.1.0",

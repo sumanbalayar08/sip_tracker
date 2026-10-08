@@ -4,28 +4,13 @@ import { getSheetData } from "@/lib/data";
 import { portfolioMetrics, type FundMetrics } from "@/lib/metrics";
 import { requireSession } from "@/lib/session";
 import { formatNav, formatPct, formatRs, formatUnits, signed } from "@/lib/format";
-import { logout, refreshFromSheet } from "./actions";
+import { SheetError } from "@/components/sheet-error";
 
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6">
-      <header className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-semibold tracking-tight">SIP Tracker</h1>
-        <div className="flex items-center gap-2 text-sm">
-          <form action={refreshFromSheet}>
-            <button className="rounded-md border border-line bg-surface px-3 py-1.5 hover:border-accent">
-              Refresh from sheet
-            </button>
-          </form>
-          <form action={logout}>
-            <button className="rounded-md px-3 py-1.5 text-ink-muted hover:text-ink">Sign out</button>
-          </form>
-        </div>
-      </header>
-      <Suspense fallback={<p className="text-ink-muted">Loading your portfolio…</p>}>
-        <Dashboard />
-      </Suspense>
-    </main>
+    <Suspense fallback={<p className="text-ink-muted">Loading your portfolio…</p>}>
+      <Dashboard />
+    </Suspense>
   );
 }
 
@@ -33,18 +18,7 @@ async function Dashboard() {
   await requireSession();
 
   const result = await getSheetData();
-  if (!result.ok) {
-    return (
-      <section role="alert" className="rounded-lg border border-bad/40 bg-surface p-5">
-        <h2 className="font-semibold text-bad">Couldn&apos;t read your Google Sheet</h2>
-        <p className="mt-2 font-mono text-sm break-words text-ink-muted">{result.error}</p>
-        <p className="mt-2 text-sm text-ink-muted">
-          Check the env vars in <code>.env.local</code> (or Vercel), and that the sheet is shared with the
-          service-account email as Editor. Run <code>pnpm sheet:init</code> to create the tabs.
-        </p>
-      </section>
-    );
-  }
+  if (!result.ok) return <SheetError error={result.error} />;
   const data = result.data;
 
   const sheetUrl = `https://docs.google.com/spreadsheets/d/${env.sheetId}/edit`;
@@ -54,6 +28,21 @@ async function Dashboard() {
 
   return (
     <>
+      {(data.legacyRows > 0 || data.missingFundTabs.length > 0) && (
+        <section className="rounded-lg border border-line bg-surface p-4 text-sm">
+          {data.legacyRows > 0 && (
+            <p>
+              {data.legacyRows} row(s) are still in the old <b>transactions</b> tab. Run <code>pnpm sheet:split</code> to
+              move them into one tab per fund.
+            </p>
+          )}
+          {data.missingFundTabs.length > 0 && (
+            <p>
+              No transactions tab yet for {data.missingFundTabs.join(", ")}. Run <code>pnpm sheet:init</code>.
+            </p>
+          )}
+        </section>
+      )}
       <section aria-label="Portfolio summary" className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-4">
         <Stat label="Current value" value={formatRs(p.value)} />
         <Stat label="Invested" value={formatRs(p.invested)} />
@@ -73,7 +62,7 @@ async function Dashboard() {
       <section className="flex flex-col gap-3">
         <h2 className="text-lg font-semibold">Funds</h2>
         {p.funds.length === 0 ? (
-          <Empty sheetUrl={sheetUrl}>No active funds. Add rows to the <b>funds</b> tab.</Empty>
+          <Empty sheetUrl={sheetUrl}>No active funds. Add rows to the <b>funds</b> tab with active = TRUE.</Empty>
         ) : (
           <div className="overflow-x-auto rounded-lg border border-line bg-surface">
             <table className="num w-full min-w-[720px] text-sm">
@@ -107,14 +96,14 @@ async function Dashboard() {
         </div>
         {data.skippedRows > 0 && (
           <p className="text-sm text-bad">
-            {data.skippedRows} row(s) in the transactions tab were skipped: each needs fund_code, date, a type
+            {data.skippedRows} transaction row(s) were skipped: each needs a date, a type
             (SIP, DIV_CASH, DIV_REINVEST, REDEEM) and amount.
           </p>
         )}
         {recent.length === 0 ? (
           <Empty sheetUrl={sheetUrl}>
-            No transactions yet. Add your SIP instalments to the <b>transactions</b> tab, one row each, then press
-            Refresh.
+            No transactions yet. Add your SIP instalments to each fund&apos;s own tab (e.g. <b>NIBLSF</b>), one row
+            each, then press Refresh.
           </Empty>
         ) : (
           <ul className="divide-y divide-line rounded-lg border border-line bg-surface text-sm">

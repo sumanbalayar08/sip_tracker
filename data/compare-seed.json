@@ -1,0 +1,981 @@
+{
+  "generated": "2026-10-08",
+  "date_convention": "Each BS month-end converted to its actual AD date from standard BS month lengths. Ashadh-end 2082 (2025-07-16) and 2083 (2026-07-16) are anchored by announced BS book-close dates (Shrawan 5/23 2082 = 2025-07-21/08-08; Shrawan 21 2083 = 2026-08-06). Other month-ends may be off by +/-1 day; Baisakh/Jestha 2083 month-ends (2026-05-14, 2026-06-14) are the least certain.",
+  "funds": [
+    {
+      "code": "NIBLSF",
+      "name": "NIBL Sahabhagita Fund",
+      "manager": "NIMB Ace Capital",
+      "type": "open"
+    },
+    {
+      "code": "NFCF",
+      "name": "Nabil Flexi Cap Fund",
+      "manager": "Nabil Investment Banking",
+      "type": "open"
+    },
+    {
+      "code": "KSLY",
+      "name": "Kumari Sunaulo Lagani Yojana",
+      "manager": "Kumari Capital",
+      "type": "open"
+    },
+    {
+      "code": "SLK",
+      "name": "Shubha Laxmi Kosh",
+      "manager": "Laxmi Sunrise Capital",
+      "type": "open"
+    },
+    {
+      "code": "NADDF",
+      "name": "NIC Asia Dynamic Debt Fund",
+      "manager": "NIC Asia Capital",
+      "type": "open"
+    },
+    {
+      "code": "SSIS",
+      "name": "Siddhartha Systematic Investment Scheme",
+      "manager": "Siddhartha Capital",
+      "type": "open"
+    },
+    {
+      "code": "NMBSBF",
+      "name": "NMB Saral Bachat Fund-E",
+      "manager": "NMB Capital",
+      "type": "open"
+    }
+  ],
+  "nav_history": [
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-05-14",
+      "nav": 10.79,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-05-14",
+      "nav": 11.34,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-05-14",
+      "nav": 11.54,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-05-14",
+      "nav": 11.59,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-05-14",
+      "nav": 10.39,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-05-14",
+      "nav": 10.76,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-05-14",
+      "nav": 10.28,
+      "bs_month": "Baisakh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-06-14",
+      "nav": 10.86,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-06-14",
+      "nav": 11.32,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-06-14",
+      "nav": 11.71,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-06-14",
+      "nav": 11.55,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-06-14",
+      "nav": 10.33,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-06-14",
+      "nav": 10.86,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-06-14",
+      "nav": 10.34,
+      "bs_month": "Jestha 2082",
+      "source": "https://www.sharesansar.com/newsdetail/overview-of-mutual-fund-trends-in-nepal-sector-wise-investments-top-stocks-and-nav-changes-in-jestha-2025-06-30"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-07-16",
+      "nav": 11.42,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-07-16",
+      "nav": 11.67,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-07-16",
+      "nav": 12.31,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-07-16",
+      "nav": 12.38,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-07-16",
+      "nav": 10.72,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-07-16",
+      "nav": 11.47,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-07-16",
+      "nav": 11.2,
+      "bs_month": "Ashadh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2025-08-03"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-08-16",
+      "nav": 10.67,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/all-5-mutual-funds-of-nimb-ace-capital-unveils-nav-report-for-the-month-of-shrawan-2025-08-31"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-08-16",
+      "nav": 10.9,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/all-3-mutual-fund-schemes-of-nabil-investment-banking-published-nav-report-of-shrawan-2025-08-31"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-08-16",
+      "nav": 11.46,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/mutual-funds-of-kumari-capital-publishes-nav-report-of-shrawan-2025-08-26"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-08-16",
+      "nav": 10.85,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/all-6-mutual-fund-schemes-of-ls-capital-published-nav-report-of-shrawan-2025-08-28"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-08-16",
+      "nav": 10.04,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/mutual-funds-of-nic-asia-capital-publishes-nav-report-of-shrawan-2025-08-31"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-08-16",
+      "nav": 10.72,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/mutual-funds-of-siddhartha-capital-unveils-nav-report-for-the-month-of-shrawan-2025-08-28"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-08-16",
+      "nav": 10.75,
+      "bs_month": "Shrawan 2082",
+      "source": "https://www.sharesansar.com/newsdetail/nmb-capital-limited-unveils-nav-report-of-its-mf-schemes-until-shrawan-2025-08-28"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-09-16",
+      "nav": 10.33,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-09-16",
+      "nav": 10.55,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-09-16",
+      "nav": 11.16,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-09-16",
+      "nav": 10.46,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-09-16",
+      "nav": 9.91,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-09-16",
+      "nav": 10.47,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-09-16",
+      "nav": 10.53,
+      "bs_month": "Bhadra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-10-17",
+      "nav": 9.41,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-10-17",
+      "nav": 9.82,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-10-17",
+      "nav": 10.43,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-10-17",
+      "nav": 9.78,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-10-17",
+      "nav": 9.43,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-10-17",
+      "nav": 9.88,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-10-17",
+      "nav": 9.9,
+      "bs_month": "Ashwin 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-ashwin-a-complete-analysis-of-multiple-factors-2025-11-02"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-11-16",
+      "nav": 9.63,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-11-16",
+      "nav": 10.06,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-11-16",
+      "nav": 10.68,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-11-16",
+      "nav": 9.97,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-11-16",
+      "nav": 9.54,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-11-16",
+      "nav": 10.07,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-11-16",
+      "nav": 10.0,
+      "bs_month": "Kartik 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2025-12-15",
+      "nav": 9.92,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2025-12-15",
+      "nav": 10.21,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2025-12-15",
+      "nav": 10.98,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2025-12-15",
+      "nav": 10.21,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2025-12-15",
+      "nav": 9.71,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2025-12-15",
+      "nav": 10.31,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2025-12-15",
+      "nav": 10.24,
+      "bs_month": "Mangsir 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-mangsir-a-complete-analysis-of-multiple-factors-2025-12-31"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-01-14",
+      "nav": 10.27,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-01-14",
+      "nav": 10.41,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-01-14",
+      "nav": 11.25,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-01-14",
+      "nav": 10.36,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-01-14",
+      "nav": 9.85,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-01-14",
+      "nav": 10.53,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-01-14",
+      "nav": 10.51,
+      "bs_month": "Poush 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-poush-a-complete-analysis-of-multiple-factors-2026-02-02"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-02-12",
+      "nav": 10.27,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-02-12",
+      "nav": 10.56,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-02-12",
+      "nav": 11.27,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-02-12",
+      "nav": 10.36,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-02-12",
+      "nav": 9.89,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-02-12",
+      "nav": 10.56,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-02-12",
+      "nav": 10.49,
+      "bs_month": "Magh 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-magh-a-complete-analysis-of-multiple-factors-2026-03-01"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-03-14",
+      "nav": 11.04,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-03-14",
+      "nav": 10.98,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-03-14",
+      "nav": 11.79,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-03-14",
+      "nav": 10.85,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-03-14",
+      "nav": 10.21,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-03-14",
+      "nav": 11.1,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-03-14",
+      "nav": 11.01,
+      "bs_month": "Falgun 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-falgun-a-complete-analysis-of-multiple-factors-2026-03-31"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-04-13",
+      "nav": 10.46,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-04-13",
+      "nav": 10.83,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-04-13",
+      "nav": 12.6,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-04-13",
+      "nav": 10.64,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-04-13",
+      "nav": 10.12,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-04-13",
+      "nav": 11.14,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-04-13",
+      "nav": 10.89,
+      "bs_month": "Chaitra 2082",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-chaitra-a-complete-analysis-of-multiple-factors-2026-05-03"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-05-14",
+      "nav": 10.26,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-05-14",
+      "nav": 10.48,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-05-14",
+      "nav": 12.12,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-05-14",
+      "nav": 10.41,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-05-14",
+      "nav": 9.99,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-05-14",
+      "nav": 11.02,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-05-14",
+      "nav": 10.72,
+      "bs_month": "Baisakh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-06-14",
+      "nav": 10.29,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-06-14",
+      "nav": 10.6,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-06-14",
+      "nav": 12.08,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-06-14",
+      "nav": 10.34,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-06-14",
+      "nav": 10.1,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-06-14",
+      "nav": 11.03,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-06-14",
+      "nav": 10.77,
+      "bs_month": "Jestha 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-jestha-a-complete-analysis-of-multiple-factors-2026-06-30"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-07-16",
+      "nav": 10.03,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-07-16",
+      "nav": 10.21,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-07-16",
+      "nav": 11.65,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-07-16",
+      "nav": 10.0,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-07-16",
+      "nav": 9.98,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-07-16",
+      "nav": 10.69,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-07-16",
+      "nav": 10.59,
+      "bs_month": "Ashadh 2083",
+      "source": "https://www.sharesansar.com/newsdetail/how-did-the-mutual-funds-perform-in-ashad-a-complete-analysis-of-multiple-factors-2026-08-03"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-08-16",
+      "nav": 10.16,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-08-16",
+      "nav": 10.32,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-08-16",
+      "nav": 11.17,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-08-16",
+      "nav": 10.05,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-08-16",
+      "nav": 9.96,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-08-16",
+      "nav": 10.62,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-08-16",
+      "nav": 10.11,
+      "bs_month": "Shrawan 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-shrawan-a-complete-analysis-of-multiple-factors-2026-09-02"
+    },
+    {
+      "fund_code": "NIBLSF",
+      "date": "2026-09-16",
+      "nav": 10.11,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "NFCF",
+      "date": "2026-09-16",
+      "nav": 10.22,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "KSLY",
+      "date": "2026-09-16",
+      "nav": 11.2,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "SLK",
+      "date": "2026-09-16",
+      "nav": 9.97,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "NADDF",
+      "date": "2026-09-16",
+      "nav": 9.86,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "SSIS",
+      "date": "2026-09-16",
+      "nav": 10.75,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "date": "2026-09-16",
+      "nav": 10.03,
+      "bs_month": "Bhadra 2083",
+      "source": "https://www.sharesansar.com/newsdetail/know-how-did-the-mutual-funds-perform-in-bhadra-a-complete-analysis-of-multiple-factors-2026-10-02"
+    }
+  ],
+  "dividends": [
+    {
+      "fund_code": "NIBLSF",
+      "book_close_date": "2025-07-21",
+      "cash_pct": 7.0,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://www.sharesansar.com/announcementdetail/nimb-ace-capital-limited-is-distributing-7-cash-dividend-of-nibl-sahabhagita-fund-to-its-shareholders-and-has-announced-a-book-closure-date-on-5th-shrawan-2082-as-well-as-a-notice-regarding-dividend-re-investment-plan-to-all-the-qualified-unitholders-2025-07-22"
+    },
+    {
+      "fund_code": "SSIS",
+      "book_close_date": "2025-07-27",
+      "cash_pct": 8.0,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://sharehubnepal.com/company/SSIS/dividend-history"
+    },
+    {
+      "fund_code": "SLK",
+      "book_close_date": "2025-07-28",
+      "cash_pct": 16.0,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://sharehubnepal.com/company/SLK/dividend-history"
+    },
+    {
+      "fund_code": "KSLY",
+      "book_close_date": "2025-07-29",
+      "cash_pct": 8.88,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://sharehubnepal.com/company/KSLY/dividend-history"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "book_close_date": "2025-07-31",
+      "cash_pct": 4.27,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://sharehubnepal.com/company/NMBSBF/dividend-history"
+    },
+    {
+      "fund_code": "NADDF",
+      "book_close_date": "2025-08-03",
+      "cash_pct": 5.55,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://www.sharesansar.com/announcementdetail/nic-asia-capital-limited-is-distributing-555-cash-dividend-of-nic-asia-dynamic-debt-fund-to-its-shareholders-and-has-announced-a-book-closure-date-on-18th-shrawan-2082-as-well-as-a-notice-regarding-dividend-re-investment-plan-to-all-the-qualified-unitholders-2025-08-04"
+    },
+    {
+      "fund_code": "NFCF",
+      "book_close_date": "2025-08-08",
+      "cash_pct": 9.0,
+      "fiscal_year": "2081/82",
+      "paid_as": "cash",
+      "source": "https://www.sharesansar.com/announcementdetail/nabil-investment-banking-limited-is-distributing-9-cash-dividend-of-nabil-flexi-cap-fund-to-its-unitholders-and-has-announced-a-book-closure-date-on-23rd-shrawan-2082-as-well-as-a-notice-regarding-dividend-re-investment-plan-to-all-the-qualified-unitholders-2025-08-08"
+    },
+    {
+      "fund_code": "SSIS",
+      "book_close_date": "2026-07-24",
+      "cash_pct": 3.0,
+      "fiscal_year": "2082/83",
+      "paid_as": "cash",
+      "source": "https://sharehubnepal.com/company/SSIS/dividend-history"
+    },
+    {
+      "fund_code": "KSLY",
+      "book_close_date": "2026-08-06",
+      "cash_pct": 4.7,
+      "fiscal_year": "2082/83",
+      "paid_as": "cash",
+      "source": "https://www.sharesansar.com/newsdetail/kumari-sunaulo-lagani-yojana-proposes-470-return-for-fy-208283-2026-08-07"
+    },
+    {
+      "fund_code": "NMBSBF",
+      "book_close_date": "2026-08-06",
+      "cash_pct": 5.25,
+      "fiscal_year": "2082/83",
+      "paid_as": "cash",
+      "source": "https://www.sharesansar.com/newsdetail/nmb-saral-bachat-fund-e-proposes-525-return-for-fy-208283-2026-08-07"
+    }
+  ],
+  "gaps": [
+    "Ashwin 2083 (Sep-Oct 2026) month-end NAV for all 7 funds: not yet published as of 2026-10-08",
+    "Weekly/latest NAV after Bhadra 2083 month-end: not collected for any fund",
+    "FY 2082/83 dividend for NIBLSF, NFCF, SLK, NADDF: no declaration found (ShareHub lists none; ShareSansar mutual-fund news Jul-Sep 2026 showed none). May be undeclared or missed.",
+    "Book-close dates for SSIS (both years), SLK, KSLY 2081/82 and NMBSBF 2081/82 taken from ShareHub dividend-history pages only, not from the manager's notice"
+  ],
+  "notes": [
+    "All 17 months Baisakh 2082 to Bhadra 2083 found for all 7 funds (119 NAV points). Values from ShareSansar monthly roundups, except Shrawan 2082 (per-manager ShareSansar NAV articles).",
+    "Months taken from a roundup's 'previous month' column: Baisakh 2082 (Jestha 2082 article), Bhadra 2082 (Ashwin article), Kartik 2082 (Mangsir article), Baisakh 2083 (Jestha 2083 article).",
+    "Cross-checks matched where both articles exist (Mangsir, Poush, Magh, Falgun, Shrawan 2083; Ashadh 2082 matches previous-month figures in the Shrawan 2082 manager articles), except NADDF Ashadh 2083: 9.98 in the Ashad 2026 roundup (used) versus 9.94 in the Shrawan 2083 roundup's previous-month column.",
+    "Data to check: KSLY Chaitra 2082 = 12.60 (up from 11.79 while every other fund fell). Not checked against a second source. NIBLSF and SLK show identical Poush and Magh 2082 NAVs (10.27, 10.36) in two separate articles.",
+    "Large Ashadh-to-Shrawan 2082 NAV drops (e.g. SLK 12.38 to 10.85) line up with FY 2081/82 dividend book closures in Jul-Aug 2025. Smaller drops from Jestha to Ashadh 2083 line up with the FY 2082/83 distributions.",
+    "All dividends are cash (% of Rs 10 face value). NIBLSF, NFCF, NADDF (2081/82), KSLY and NMBSBF (2082/83) notices also offer an optional Dividend Reinvestment Plan (DRIP), so investors who opted in got units at NAV. No scheme paid only in reinvestment units.",
+    "NMBSBF FY 2081/82: proposed 4.27% (ShareHub, ShareSansar 2025-08-01); a later NMB Capital announcement (2025-08-24) says 4.18138% return distributed: https://www.sharesansar.com/announcementdetail/nmb-capital-limited-has-declared-to-distribute-418138-return-scheme-to-the-unitholders-of-its-nmb-saral-bachat-fund-e-for-the-fiscal-year-208182-2025-08-24",
+    "SSIS FY 2082/83 3%: ShareHub shows book closure 2026-07-24 but announcement 2026-07-26; treat book-close date as unverified."
+  ]
+}

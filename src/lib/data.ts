@@ -1,42 +1,25 @@
 import "server-only";
 import { cacheLife, cacheTag } from "next/cache";
-import { readTabs } from "./sheets";
-import { parseFunds, parseSettings, parseTransactions } from "./records";
+import { readWorkbook } from "./sheets";
+import { assemble, type SheetData } from "./assemble";
 
 export const SHEET_TAG = "sheet";
-
-export type SheetData = {
-  funds: ReturnType<typeof parseFunds>;
-  transactions: ReturnType<typeof parseTransactions>["transactions"];
-  skippedRows: number;
-  settings: ReturnType<typeof parseSettings>;
-};
+export type { SheetData };
 
 export type SheetResult = { ok: true; data: SheetData } | { ok: false; error: string };
 
 /**
- * Everything the dashboard needs, in one Sheets call. Successful reads are
- * cached for a few minutes to stay well under the Sheets read quota;
- * `updateTag(SHEET_TAG)` (the Refresh button, or any write) makes the next
- * read fresh. Failures are returned (not thrown) so the page can show the
- * real reason, and are only cached for seconds.
+ * The whole workbook, in two Sheets calls. Successful reads are cached for a
+ * few minutes; `updateTag(SHEET_TAG)` (the Refresh button) makes the next read
+ * fresh. Failures are returned, not thrown, and cached only for seconds.
  */
 export async function getSheetData(): Promise<SheetResult> {
   "use cache";
   cacheTag(SHEET_TAG);
   try {
-    const raw = await readTabs(["funds", "transactions", "settings"]);
-    const { transactions, skipped } = parseTransactions(raw.transactions);
+    const data = assemble(await readWorkbook());
     cacheLife("minutes");
-    return {
-      ok: true,
-      data: {
-        funds: parseFunds(raw.funds),
-        transactions,
-        skippedRows: skipped,
-        settings: parseSettings(raw.settings),
-      },
-    };
+    return { ok: true, data };
   } catch (e) {
     cacheLife("seconds");
     console.error("[sheets] read failed", e);

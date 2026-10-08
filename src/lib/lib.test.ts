@@ -90,3 +90,100 @@ describe("fundMetrics", () => {
     expect(m.unitsSource).toBe("sheet");
   });
 });
+
+import { project } from "./projection";
+import { navOn, simulate } from "./whatif";
+import { assemble } from "./assemble";
+
+describe("project", () => {
+  it("matches the annuity-due formula for a level SIP", () => {
+    const pts = project({ startValue: 0, startInvested: 0, monthlySip: 20000, annualReturn: 0.12, years: 30 });
+    const rm = Math.pow(1.12, 1 / 12) - 1;
+    const fv = (20000 * (Math.pow(1 + rm, 360) - 1)) / rm * (1 + rm);
+    expect(pts).toHaveLength(31);
+    expect(pts[30].invested).toBe(7_200_000);
+    expect(pts[30].value).toBeCloseTo(fv, 0); // ≈ Rs 6.16 crore
+  });
+
+  it("compounds an existing balance with no SIP", () => {
+    const pts = project({ startValue: 100000, startInvested: 100000, monthlySip: 0, annualReturn: 0.1, years: 2 });
+    expect(pts[2].value).toBeCloseTo(121000, 0);
+  });
+
+  it("applies step-up and inflation", () => {
+    const pts = project({ startValue: 0, startInvested: 0, monthlySip: 1000, annualReturn: 0, years: 2, stepUp: 0.1, inflation: 0.1 });
+    expect(pts[2].invested).toBeCloseTo(12000 + 13200);
+    expect(pts[2].realValue).toBeCloseTo(25200 / 1.21);
+  });
+});
+
+describe("navOn", () => {
+  const navs = [
+    { date: "2025-05-14", nav: 10 },
+    { date: "2025-06-14", nav: 11 },
+  ];
+  it("uses the latest NAV on or before the date", () => {
+    expect(navOn(navs, "2025-06-01")?.nav).toBe(10);
+    expect(navOn(navs, "2025-06-14")?.nav).toBe(11);
+  });
+  it("falls forward a few days when history starts later", () => {
+    expect(navOn(navs, "2025-05-11")?.nav).toBe(10);
+    expect(navOn(navs, "2025-01-01")).toBeNull();
+  });
+  it("refuses stale NAVs", () => {
+    expect(navOn(navs, "2025-12-01")).toBeNull();
+  });
+});
+
+describe("simulate", () => {
+  it("buys units on SIP dates and pays dividends on units held", () => {
+    const r = simulate(
+      [
+        { date: "2025-01-10", type: "SIP", amount: 1000 },
+        { date: "2025-02-10", type: "SIP", amount: 1000 },
+      ],
+      [
+        { date: "2025-01-01", nav: 10 },
+        { date: "2025-02-01", nav: 20 },
+        { date: "2025-03-01", nav: 20 },
+      ],
+      [{ date: "2025-01-20", cashPct: 10 }],
+    );
+    expect(r.units).toBeCloseTo(150);
+    expect(r.cashDividends).toBeCloseTo(100); // 10% of Rs 10 × 100 units
+    expect(r.value).toBeCloseTo(3000);
+    expect(r.gain).toBeCloseTo(1100);
+    expect(r.missingDates).toEqual([]);
+  });
+});
+
+describe("assemble", () => {
+  const funds = [
+    ["code", "name", "manager", "type", "units_held", "current_nav", "nav_date", "active"],
+    ["NIBLSF", "NIBL", "", "open", "", 10, "2026-09-16", true],
+    ["NFCF", "Nabil", "", "open", "", 10, "2026-09-16", true],
+    ["KSLY", "Kumari", "", "open", "", 11, "2026-09-16", false],
+  ];
+  const fundTab = (rows: unknown[][]) => [["id", "date", "type", "amount", "nav", "units", "note"], ...rows];
+
+  it("reads per-fund tabs and doesn't double count the legacy tab", () => {
+    const d = assemble({
+      funds: funds as never,
+      NIBLSF: fundTab([["1", "2025-05-11", "SIP", 5000, 10.84, 460.79, ""]]) as never,
+      transactions: [
+        ["id", "fund_code", "date", "type", "amount", "nav", "units", "note"],
+        ["1", "NIBLSF", "2025-05-11", "SIP", 5000, 10.84, 460.79, ""],
+        ["2", "NFCF", "2026-08-03", "SIP", 5000, 10.43, 478, ""],
+      ] as never,
+    });
+    expect(d.transactions.map((t) => t.fundCode)).toEqual(["NIBLSF", "NFCF"]);
+    expect(d.legacyRows).toBe(1);
+    expect(d.missingFundTabs).toEqual([]);
+    expect(d.navHistory.NIBLSF.map((p) => p.date)).toEqual(["2025-05-11", "2026-09-16"]);
+  });
+
+  it("flags active funds with no tab", () => {
+    const d = assemble({ funds: funds as never });
+    expect(d.missingFundTabs).toEqual(["NIBLSF", "NFCF"]);
+  });
+});
